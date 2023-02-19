@@ -1,7 +1,5 @@
+import React from 'react';
 import { Card } from "react-bootstrap";
-
-
-
 
 const Product = ({ product }) => {
     return (
@@ -14,7 +12,7 @@ const Product = ({ product }) => {
                 <Card.Body>
 
                     <a href={`product/${product._id}`} style={{textDecoration:'none'}}>
-                        <Card.Title className="my-2">
+                        <Card.Title as="div" className="my-2">
                             <strong>{product.name}</strong>
                         </Card.Title>
                     </a>
