@@ -1,7 +1,7 @@
 import { useCallback } from "react";
+import PropTypes from 'prop-types';
 
-
-const Rating = ({ value, total }) => {
+const Rating = ({ value, text, color }) => {
 
     const getStarsArr = useCallback(() => {
         const emptyStar = "far fa-star";
@@ -13,7 +13,7 @@ const Rating = ({ value, total }) => {
         const numberOfhalf = String(value).includes('.5') ? 1 : 0;
         const numberOfEmpty = maxCount - numberOfFull - numberOfhalf;
 
-        console.log(value, numberOfFull, numberOfhalf, numberOfEmpty);
+        //console.log(value, numberOfFull, numberOfhalf, numberOfEmpty);
 
         let starsArr = [];
 
@@ -37,16 +37,32 @@ const Rating = ({ value, total }) => {
     return (
         <>
             <div>
-                <span>
                     {getStarsArr()?.length > 1 &&
                         getStarsArr().map((star, index) =>
-                            <i className={star} key={index} aria-hidden="true"></i>
+                        <span key={index}>
+                            <i 
+                            style={{color}} 
+                            className={star} 
+                            aria-hidden="true"
+                            ></i>
+                        </span>
                         )
                     }
-                    {total} reviews</span>
+                     <span>{text && text}</span>
             </div>
         </>
     );
+}
+
+Rating.defaultProps={
+    color:'#f8e825'
+}
+
+
+Rating.propTypes={
+    value:PropTypes.number.isRequired, 
+    text:PropTypes.string.isRequired, 
+    color:PropTypes.string
 }
 
 export default Rating;

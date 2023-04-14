@@ -23,7 +23,7 @@ const Product = ({ product }) => {
                             {/* {product.rating} from {product.numReviews} reviews */}
                             <Rating
                                 value={product.rating}
-                                total={product.numReviews}
+                                text={`${product.numReviews} reviews`}
                             />
                         </div>
                     </Card.Text>
